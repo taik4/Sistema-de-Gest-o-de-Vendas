@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\samuel.fonseca\\source\\repos\\BlazorAppSistemaVendaBCC\\BlazorAppSistemaVendaBCC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppSistemaVendaBCC.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BlazorAppSistemaVendaBCC.6qe3932c75.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\samuel.fonseca\\source\\repos\\BlazorAppSistemaVendaBCC\\BlazorAppSistemaVendaBCC\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\samuel.fonseca\\source\\repos\\BlazorAppSistemaVendaBCC\\BlazorAppSistemaVendaBCC\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\samuel.fonseca\\source\\repos\\BlazorAppSistemaVendaBCC\\BlazorAppSistemaVendaBCC\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\samuel.fonseca\\source\\repos\\BlazorAppSistemaVendaBCC\\BlazorAppSistemaVendaBCC\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorAppSistemaVendaBCC.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorAppSistemaVendaBCC.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorAppSistemaVendaBCC.props",
+      "PackagePath": "build\\BlazorAppSistemaVendaBCC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorAppSistemaVendaBCC.props",
+      "PackagePath": "buildMultiTargeting\\BlazorAppSistemaVendaBCC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorAppSistemaVendaBCC.props",
+      "PackagePath": "buildTransitive\\BlazorAppSistemaVendaBCC.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

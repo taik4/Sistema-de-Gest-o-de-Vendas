@@ -1,0 +1,127 @@
+﻿@page "/cliente/novo"
+@page "/cliente/{ClienteId:int?}"
+@rendermode InteractiveServer
+@using BlazorAppSistemaVendaBCC.Entities
+@using BlazorAppSistemaVendaBCC.Service.Interface
+@inject IClientesService ClienteService
+@inject NavigationManager NavManager
+
+
+<div class="container mt-4">
+    <h3>@(ClienteId.HasValue ? "Editar Cliente" : "Novo Cliente")</h3>
+    <hr />
+
+    @if (cliente == null && ClienteId.HasValue)
+    {
+        <div class="text-center p-5">
+            <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Carregando...</span>
+            </div>
+        </div>
+    }
+    else if (cliente != null)
+    {
+        <EditForm Model="@cliente" OnValidSubmit="SalvarCliente" FormName="ClientesForm" class="p-4 border rounded shadow-sm">
+
+            <DataAnnotationsValidator />
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <InputText id="nome" @bind-Value="cliente.Nome" class="form-control" />
+                    <ValidationMessage For="@(() => cliente.Nome)" class="text-danger" />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="cpfcnpj" class="form-label">CPF/CNPJ</label>
+                    <InputText id="cpfcnpj" @bind-Value="cliente.CpfCnpj" class="form-control" />
+                    <ValidationMessage For="@(() => cliente.CpfCnpj)" class="text-danger" />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <InputText id="email" @bind-Value="cliente.Email" class="form-control" />
+                    <ValidationMessage For="@(() => cliente.Email)" class="text-danger" />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <InputText id="telefone" @bind-Value="cliente.Telefone" class="form-control" />
+                    <ValidationMessage For="@(() => cliente.Telefone)" class="text-danger" />
+                </div>
+
+                <div class="col-12">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <InputText id="endereco" @bind-Value="cliente.Endereco" class="form-control" />
+                    <ValidationMessage For="@(() => cliente.Endereco)" class="text-danger" />
+                </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-top">
+                <button type="submit" class="btn btn-success me-2">
+                    <i class="bi bi-save"></i> Salvar
+                </button>
+                <button type="button" class="btn btn-secondary" @onclick="VoltarParaLista">
+                    <i class="bi bi-arrow-left"></i> Cancelar/Voltar
+                </button>
+            </div>
+
+            <ValidationSummary class="alert alert-warning mt-3" />
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int? ClienteId { get; set; }
+
+    private Cliente cliente;
+
+    // É chamado quando os parâmetros de rota são definidos ou alterados
+    protected override async Task OnParametersSetAsync()
+    {
+        if (ClienteId.HasValue && ClienteId.Value > 0)
+        {
+            // MODO EDIÇÃO: Carrega o cliente existente
+            cliente = await ClienteService.PesquisarPorID(ClienteId.Value);
+        }
+        else
+        {
+            // MODO NOVO: Inicializa uma nova instância
+            cliente = new Cliente();
+        }
+    }
+
+    private async Task SalvarCliente()
+    {
+        try
+        {
+            if (cliente.Id == 0)
+            {
+                // É novo: chama Adicionar (Create)
+                await ClienteService.AdicionarAsync(cliente);
+            }
+            else
+            {
+                // Já existe: chama Alterar (Update)
+                await ClienteService.AlterarAsync(cliente);
+            }
+
+            // Volta para a lista
+            VoltarParaLista();
+        }
+        catch (Exception ex)
+        {
+            // Tratamento de erro (ex: falha de banco de dados)
+            Console.WriteLine($"Erro ao salvar cliente: {ex.Message}");
+            // Poderia adicionar uma mensagem de erro na tela aqui
+        }
+    }
+
+    private void VoltarParaLista()
+    {
+        NavManager.NavigateTo("/clientes");
+    }
+}
